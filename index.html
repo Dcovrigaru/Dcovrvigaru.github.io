@@ -7,18 +7,22 @@
     <meta name="description" content="Dean Covrigaru's portfolio showcasing skills, experiences, and projects as a Computer Science student at Toronto Metropolitan University.">
     <meta name="keywords" content="Computer Science, Portfolio, Dean Covrigaru, Projects, Experience, Education">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css">
-    <link rel="stylesheet" href="deanWebsiteCSS.css">
+    <link rel="stylesheet" href="./deanWebsiteCSS.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" defer></script>
-    <style>
-    </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            emailjs.init("KTZYiBH7VkXlcPKhy"); // Replace with your actual EmailJS public key
+        });
+    </script>
 </head>
 <body>
     <div id="particles-js"></div>
 
-    <!-- Your existing HTML structure remains the same, but update project cards -->
+    <!-- Navigation Tabs -->
     <div class="nav-container" role="navigation" aria-label="Main Navigation">
         <div class="nav-tabs" role="tablist">
             <div class="nav-tab active" role="tab" aria-selected="true" tabindex="0" data-tab="about" id="about-tab">About</div>
@@ -27,9 +31,8 @@
             <div class="nav-tab" role="tab" aria-selected="false" tabindex="0" data-tab="contact" id="contact-tab">Contact</div>
         </div>
     </div>
-    
 
-        <!-- About Tab -->
+    <div id="status-message" style="display: none;" role="alert"></div>
     <div id="about" class="tab-content active" role="tabpanel">
         <header class="scroll-animation">
             <h1>Dean Covrigaru</h1>
@@ -47,7 +50,7 @@
                     <span class="badge">Data Structures</span>
                 </div>
             </div>
-
+    
             <!-- Education Section -->
             <div class="card fade-in">
                 <h2>Education</h2>
@@ -68,13 +71,16 @@
                     </div>
                 </div>
             </div>
-
+    
             <!-- Featured Projects Section -->
             <div class="card fade-in">
                 <h2>Featured Projects</h2>
+                <p><br></p>
                 <div class="project-grid">
                     <div class="card project-card fade-in">
-                        <img src="PythonImage.jpg" alt="Adventure Game Screenshot" class="project-image project-image-small">
+                        <a href="https://github.com/Dcovrigaru/CCPS406-Project" class="project-link">
+                            <img src="C:\Users\dean\Downloads\PythonImage.jpg" alt="Adventure Game Screenshot" class="project-image project-image-small">
+                        </a>
                         <div class="project-content">
                             <h3>Text-Based Adventure Game</h3>
                             <p>An immersive narrative-driven game developed in Python featuring dynamic storylines and character progression.</p>
@@ -83,42 +89,23 @@
                                 <span class="badge">OOP</span>
                                 <span class="badge">Game Design</span>
                             </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Dcovrigaru/CCPS406-Project" class="project-link"><i class="fab fa-github"></i> View Code</a>
-                            </div>
                         </div>
                     </div>
-
-                    <div class="card project-card fade-in">
-                        <div class="project-content">
-                            <h3>Vending Machine Simulation</h3>
-                            <p>A C++ application demonstrating object-oriented principles through a realistic vending machine interface.</p>
-                            <div class="badge-container">
-                                <span class="badge">C++</span>
-                                <span class="badge">OOP</span>
-                                <span class="badge">UI Design</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-play"></i> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
+    
                     <div class="card project-card fade-in">
                         <div class="project-content">
                             <h3>Personal Website Portfolio</h3>
                             <p>
-                            This! A modern showcase utilizing HTML and custom CSS animations. 
-                            The site highlights my projects and skills with a clean, 
-                            responsive design, featuring interactive elements that enhance 
-                            user engagement. Visitors can easily navigate through various sections, 
-    each displaying detailed information about my work experience, 
-    educational background, and personal projects. Interactive elements 
-    such as hover effects and transitions enhance user engagement, 
-    providing a visually appealing experience. Additionally, 
-    the portfolio is optimized for mobile devices, ensuring a seamless 
-    browsing experience across different screen sizes.
+                                This! A modern showcase utilizing HTML and custom CSS animations. 
+                                The site highlights my projects and skills with a clean, 
+                                responsive design, featuring interactive elements that enhance 
+                                user engagement. Visitors can easily navigate through various sections, 
+                                each displaying detailed information about my work experience, 
+                                educational background, and personal projects. Interactive elements 
+                                such as hover effects and transitions enhance user engagement, 
+                                providing a visually appealing experience. Additionally, 
+                                the portfolio is optimized for mobile devices, ensuring a seamless 
+                                browsing experience across different screen sizes.
                             </p>
                             <div class="badge-container">
                                 <span class="badge">HTML5</span>
@@ -135,10 +122,14 @@
             </div>
         </div>
     </div>
+    
+
+
     <!-- Experience Tab -->
     <div id="experience" class="tab-content" role="tabpanel">
         <div class="container">
             <h2>Professional Experience</h2>
+            <p><br></p>
             <div class="card fade-in">
                 <div style="display: flex; justify-content: space-between; align-items: start;">
                     <div>
@@ -221,7 +212,7 @@
     <!-- Resume Tab -->
     <div id="resume" class="tab-content" role="tabpanel" style="width: 100%; height: 100vh; overflow: hidden;">
         <div class="container" style="height: 100%; position: relative; padding-top: 80px;">
-            <iframe id="pdfIframe" src="DeanCovrigaruResumePath.pdf.pdf"
+            <iframe id="pdfIframe" src="C:\Users\dean\Downloads\DeanCovrigaruResumePath.pdf.pdf"
                 style="width: 100%; height: calc(100vh - 80px); border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border-radius: 12px;">
             </iframe>
         </div>
@@ -230,7 +221,6 @@
     
 
 
-    <!-- Contact Tab -->
     <div id="contact" class="tab-content" role="tabpanel">
         <div class="container">
             <h2>Get In Touch</h2>
@@ -255,16 +245,14 @@
                     <button type="submit">Send Message</button>
                 </form>
             </div>
-            <div class="social-links fade-in">
-                <h3>Connect With Me</h3>
-                <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank" aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin"></i>
+
+            <!-- Social Media Buttons -->
+            <div class="social-buttons" style="margin-top: 1.5rem; text-align: center;">
+                <a href="https://github.com/Dcovrigaru" target="_blank" class="social-link" aria-label="GitHub" style="margin: 0 1rem;">
+                    <i class="fab fa-github" style="font-size: 2rem;"></i>
                 </a>
-                <a href="mailto:dean@covrigaru.com" aria-label="Email Dean Covrigaru">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://github.com/Dcovrigaru" target="_blank" aria-label="GitHub Profile">
-                    <i class="fab fa-github"></i>
+                <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank" class="social-link" aria-label="LinkedIn" style="margin: 0 1rem;">
+                    <i class="fab fa-linkedin" style="font-size: 2rem; color: #0077b5;"></i>
                 </a>
             </div>
         </div>
@@ -275,6 +263,28 @@
     </div>
 
     <script>
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            // Collect form data
+            const form = document.getElementById('contact-form');
+            const statusMessage = document.getElementById('status-message');
+            
+            try {
+                const result = await emailjs.sendForm('service_1y58kbv', 'template_gg99nfg', form);
+                console.log('Email sent:', result.status, result.text);
+                
+                // Success message
+                statusMessage.textContent = 'Message sent successfully!';
+                statusMessage.style.display = 'block';
+                form.reset(); // Clear form
+            } catch (error) {
+                console.error('Error sending email:', error);
+                statusMessage.textContent = 'Error sending message. Please try again later.';
+                statusMessage.style.color = 'red';
+                statusMessage.style.display = 'block';
+            }
+        }
         // Tab switching functionality
         const tabs = document.querySelectorAll('.nav-tab');
         const tabContents = document.querySelectorAll('.tab-content');
