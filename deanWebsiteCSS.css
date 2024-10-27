@@ -27,6 +27,8 @@ body {
     background-attachment: fixed;
     position: relative;
     overflow-x: hidden;
+    min-height: 100vh;
+    padding-bottom: 40px;
 }
 
 .trademark {
@@ -36,6 +38,11 @@ body {
     color: var(--text-color);
     font-size: 14px;
     z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    pointer-events: none;
 }
 
 #particles-js {
@@ -111,6 +118,7 @@ body {
 .tab-content {
     display: none;
     padding-top: 60px;
+    margin-bottom: 40px;
 }
 
 .tab-content.active {
@@ -152,7 +160,7 @@ header::before {
     transform: scale(1.1) rotate(5deg);
 }
 
-/* Updated Project Card Styles */
+/* Project Card Styles */
 .project-card {
     display: flex;
     align-items: flex-start;
@@ -221,6 +229,7 @@ header::before {
     margin: 0 auto;
     padding: 2rem;
     position: relative;
+    min-height: calc(100vh - 40px);
 }
 
 .card {
@@ -410,10 +419,25 @@ button:hover::after {
 @media (max-width: 768px) {
     .nav-container {
         padding: 0.5rem;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-tabs {
+        display: flex;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+        width: auto;
+        flex-wrap: nowrap;
     }
 
     .nav-tab {
         padding: 0.5rem 1rem;
+        white-space: nowrap;
+        font-size: 0.9rem;
+        flex-shrink: 0;
     }
 
     header {
@@ -449,66 +473,16 @@ button:hover::after {
         font-size: 1.5rem;
     }
 
-    footer {
-        padding: 1rem;
-    }
-}
-
-media (max-width: 768px) {
-    .nav-container {
-        padding: 0.5rem;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    .trademark {
+        font-size: 12px;
+        padding: 4px 8px;
     }
 
-    .nav-tabs {
-        display: flex;
-        justify-content: flex-start; /* Change from center to flex-start */
-        gap: 0.5rem; /* Reduce gap for mobile */
-        padding: 0 0.5rem; /* Add some padding on the sides */
-        width: auto; /* Allow tabs to extend beyond screen width */
-        flex-wrap: nowrap; /* Prevent wrapping */
+    body {
+        padding-bottom: 35px;
     }
 
-    .nav-tab {
-        padding: 0.5rem 1rem;
-        white-space: nowrap; /* Prevent text wrapping */
-        font-size: 0.9rem; /* Slightly smaller font size */
-        flex-shrink: 0; /* Prevent tabs from shrinking */
+    .container {
+        min-height: calc(100vh - 35px);
     }
-}
-
-/* Updated trademark positioning */
-.trademark {
-    position: relative; /* Change from fixed to relative */
-    bottom: auto; /* Remove fixed bottom */
-    left: auto; /* Remove fixed left */
-    color: var(--text-color);
-    font-size: 14px;
-    padding: 10px;
-    text-align: left;
-    margin-top: 2rem; /* Add some space above the trademark */
-}
-
-/* Add this to ensure the trademark stays at the bottom of the content */
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    flex: 1 0 auto; /* This will make the container take up available space */
-}
-
-footer {
-    flex-shrink: 0; /* Prevent the footer from shrinking */
-    width: 100%;
-    padding: 1rem;
-}
-
-/* Place the trademark inside the footer if you have one, or create one */
-footer .trademark {
-    margin-top: 0; /* Remove top margin if inside footer */
 }
