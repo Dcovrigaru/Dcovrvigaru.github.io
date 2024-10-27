@@ -20,7 +20,7 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background: url("C:/Users/dean/Downloads/interlaced.png");
+            background: src = "interlaced.png";
             background-size: cover;
             background-attachment: fixed;
             position: relative;
