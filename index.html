@@ -7,6 +7,7 @@
     <meta name="description" content="Dean Covrigaru's portfolio showcasing skills, experiences, and projects as a Computer Science student at Toronto Metropolitan University.">
     <meta name="keywords" content="Computer Science, Portfolio, Dean Covrigaru, Projects, Experience, Education">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css">
+    <!-- Change to this -->
     <link rel="stylesheet" href="./deanWebsiteCSS.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
@@ -27,31 +28,71 @@
     </div>
 
     <nav class="nav-container" role="navigation" aria-label="Main Navigation">
-        <div class="nav-brand">DC</div>
+        <!-- Logo/Brand -->
+        <div class="nav-brand" onclick="window.location.href='#'">
+            <span class="logo-text">DC</span>
+        </div>
+    
+        <!-- Main Navigation Tabs -->
         <div class="nav-tabs" role="tablist">
-            <div class="nav-tab active" role="tab" aria-selected="true" data-tab="about">
-                <i class="fas fa-user"></i>
+            <!-- About Tab -->
+            <div class="nav-tab active" 
+                 role="tab" 
+                 aria-selected="true" 
+                 data-tab="about"
+                 tabindex="0">
+                <i class="fas fa-user" aria-hidden="true"></i>
                 <span>About</span>
             </div>
-            <div class="nav-tab" role="tab" aria-selected="false" data-tab="experience">
-                <i class="fas fa-briefcase"></i>
+    
+            <!-- Experience Tab -->
+            <div class="nav-tab" 
+                 role="tab" 
+                 aria-selected="false" 
+                 data-tab="experience"
+                 tabindex="0">
+                <i class="fas fa-briefcase" aria-hidden="true"></i>
                 <span>Experience</span>
             </div>
-            <div class="nav-tab" role="tab" aria-selected="false" data-tab="resume">
-                <i class="fas fa-file-alt"></i>
+    
+            <!-- Resume Tab -->
+            <div class="nav-tab" 
+                 role="tab" 
+                 aria-selected="false" 
+                 data-tab="resume"
+                 tabindex="0">
+                <i class="fas fa-file-alt" aria-hidden="true"></i>
                 <span>Resume</span>
             </div>
-            <div class="nav-tab" role="tab" aria-selected="false" data-tab="contact">
-                <i class="fas fa-envelope"></i>
+    
+            <!-- Contact Tab -->
+            <div class="nav-tab" 
+                 role="tab" 
+                 aria-selected="false" 
+                 data-tab="contact"
+                 tabindex="0">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
                 <span>Contact</span>
             </div>
         </div>
-        <button class="theme-toggle" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
+    
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" 
+                aria-label="Toggle dark theme" 
+                title="Toggle dark mode">
+            <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
     </nav>
-
-    <div id="status-message" class="status-message" role="alert"></div>
+    
+    <!-- Status Message Container -->
+    <div id="status-message" 
+         class="status-message" 
+         role="alert" 
+         aria-live="polite">
+    </div>
+    
+    <!-- Mobile Menu Overlay (for mobile navigation) -->
+    <div class="mobile-menu-overlay" aria-hidden="true"></div>
 
     <main>
         <!-- About Section -->
@@ -357,214 +398,247 @@
     </div>
 
     <script>
-        // Initialize particles.js
-        particlesJS.load('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#552583"
-                },
-                "shape": {
-                    "type": "circle"
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false
-                },
-                "size": {
-                    "value": 3,
-                    "random": true
-                },
-                "line_linked": {
+        document.addEventListener('DOMContentLoaded', () => {
+    // Initialize particles.js
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": 80,
+                "density": {
                     "enable": true,
-                    "distance": 150,
-                    "color": "#552583",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
+                    "value_area": 800
                 }
             },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                }
+            "color": {
+                "value": "#552583"
             },
-            "retina_detect": true
-        });
-
-        // Loading screen
-        window.addEventListener('load', () => {
-            const loadingScreen = document.querySelector('.loading-screen');
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 500);
-        });
-
-        // Tab switching functionality
-        const tabs = document.querySelectorAll('.nav-tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    content.style.display = 'none';
-                });
-
-                // Add active class to clicked tab and corresponding content
-                tab.classList.add('active');
-                const content = document.getElementById(tab.dataset.tab);
-                content.style.display = 'block';
-                setTimeout(() => content.classList.add('active'), 50);
-
-                // Reset and trigger animations for the new tab
-                const fadeElements = content.querySelectorAll('.fade-in');
-                fadeElements.forEach(el => {
-                    el.classList.remove('visible');
-                    void el.offsetWidth; // Trigger reflow
-                    el.classList.add('visible');
-                });
-
-                // Animate progress bars if in experience tab
-                if (tab.dataset.tab === 'experience') {
-                    animateProgressBars();
-                }
-            });
-        });
-
-        // Typewriter effect
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.textContent = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
+            "shape": {
+                "type": "circle"
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false
+            },
+            "size": {
+                "value": 3,
+                "random": true
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#552583",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false
             }
-            
-            type();
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            }
+        },
+        "retina_detect": true
+    });
+
+    // Loading screen
+    const loadingScreen = document.querySelector('.loading-screen');
+    if (loadingScreen) {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }
+
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('.nav-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    function switchTab(targetTab) {
+        const targetId = targetTab.dataset.tab;
+        
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+            content.style.display = 'none';
+        });
+
+        // Add active class to clicked tab
+        targetTab.classList.add('active');
+
+        // Show corresponding content
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+            targetContent.style.display = 'block';
+            setTimeout(() => targetContent.classList.add('active'), 50);
+
+            // Reset and trigger animations
+            const fadeElements = targetContent.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.classList.remove('visible');
+                void el.offsetWidth; // Trigger reflow
+                el.classList.add('visible');
+            });
+
+            // Animate progress bars if in experience tab
+            if (targetId === 'experience') {
+                animateProgressBars();
+            }
         }
+    }
 
-        // Initialize typewriter
-        const typewriterElement = document.querySelector('.typewriter');
-        const phrases = [
-            'Computer Science Student',
-            'Software Developer',
-            'Problem Solver',
-            'Tech Enthusiast'
-        ];
-        let phraseIndex = 0;
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => switchTab(tab));
+    });
 
-        function typeNextPhrase() {
-            typeWriter(typewriterElement, phrases[phraseIndex], 100);
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            setTimeout(typeNextPhrase, 4000);
+    // Initialize with default tab
+    const defaultTab = document.querySelector('.nav-tab.active');
+    if (defaultTab) {
+        switchTab(defaultTab);
+    }
+
+    // Typewriter effect
+    const typewriterElement = document.querySelector('.typewriter');
+    const phrases = [
+        'Computer Science Student',
+        'Software Developer',
+        'Problem Solver',
+        'Tech Enthusiast'
+    ];
+    let phraseIndex = 0;
+
+    function typeWriter(element, text, speed = 100) {
+        if (!element) return;
+        
+        let i = 0;
+        element.textContent = '';
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
         }
+        
+        type();
+    }
 
-        typeNextPhrase();
+    function typeNextPhrase() {
+        if (!typewriterElement) return;
+        
+        typeWriter(typewriterElement, phrases[phraseIndex], 100);
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(typeNextPhrase, 4000);
+    }
 
-        // Theme toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        const root = document.documentElement;
+    typeNextPhrase();
 
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const root = document.documentElement;
+
+    if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             root.classList.toggle('dark-theme');
             const icon = themeToggle.querySelector('i');
-            if (root.classList.contains('dark-theme')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+            if (icon) {
+                if (root.classList.contains('dark-theme')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
             }
         });
+    }
 
-        // Contact form submission
-        async function handleSubmit(event) {
+    // Progress bar animation
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress');
+        progressBars.forEach(bar => {
+            const progress = bar.dataset.progress;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = `${progress}%`;
+            }, 200);
+        });
+    }
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const form = document.getElementById('contact-form');
             const statusMessage = document.getElementById('status-message');
             
             try {
-                const result = await emailjs.sendForm('service_1y58kbv', 'template_gg99nfg', form);
+                const result = await emailjs.sendForm('service_1y58kbv', 'template_gg99nfg', contactForm);
                 console.log('Email sent:', result.status, result.text);
                 
-                statusMessage.textContent = 'Message sent successfully!';
-                statusMessage.classList.add('success');
-                statusMessage.style.display = 'block';
-                form.reset();
+                if (statusMessage) {
+                    statusMessage.textContent = 'Message sent successfully!';
+                    statusMessage.classList.add('success');
+                    statusMessage.style.display = 'block';
+                }
+                
+                contactForm.reset();
                 
                 setTimeout(() => {
-                    statusMessage.style.display = 'none';
-                    statusMessage.classList.remove('success');
+                    if (statusMessage) {
+                        statusMessage.style.display = 'none';
+                        statusMessage.classList.remove('success');
+                    }
                 }, 5000);
             } catch (error) {
                 console.error('Error sending email:', error);
-                statusMessage.textContent = 'Error sending message. Please try again later.';
-                statusMessage.classList.add('error');
-                statusMessage.style.display = 'block';
                 
-                setTimeout(() => {
-                    statusMessage.style.display = 'none';
-                    statusMessage.classList.remove('error');
-                }, 5000);
-            }
-        }
-
-        // Progress bar animation
-        function animateProgressBars() {
-            const progressBars = document.querySelectorAll('.progress');
-            progressBars.forEach(bar => {
-                const progress = bar.dataset.progress;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = `${progress}%`;
-                }, 200);
-            });
-        }
-
-        // Intersection Observer for fade-in animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                if (statusMessage) {
+                    statusMessage.textContent = 'Error sending message. Please try again later.';
+                    statusMessage.classList.add('error');
+                    statusMessage.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        statusMessage.style.display = 'none';
+                        statusMessage.classList.remove('error');
+                    }, 5000);
                 }
-            });
-        }, { threshold: 0.1 });
+            }
+        });
+    }
 
-        fadeElements.forEach(element => observer.observe(element));
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
 
-        // Initialize GSAP ScrollTrigger
+    fadeElements.forEach(element => observer.observe(element));
+
+    // Initialize GSAP ScrollTrigger
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
         // Animate elements on scroll
@@ -580,6 +654,9 @@
                 }
             });
         });
+    }
+});
+       
     </script>
 </body>
 </html>
