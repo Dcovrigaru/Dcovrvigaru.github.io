@@ -8,6 +8,7 @@
     <meta name="keywords" content="Computer Science, Portfolio, Dean Covrigaru, Projects, Experience, Education">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css">
     <link rel="stylesheet" href="./deanWebsiteCSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -15,280 +16,418 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            emailjs.init("KTZYiBH7VkXlcPKhy"); // Replace with your actual EmailJS public key
+            emailjs.init("KTZYiBH7VkXlcPKhy");
         });
     </script>
 </head>
 <body>
     <div id="particles-js"></div>
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
 
-    <!-- Navigation Tabs -->
-    <div class="nav-container" role="navigation" aria-label="Main Navigation">
+    <nav class="nav-container" role="navigation" aria-label="Main Navigation">
+        <div class="nav-brand">DC</div>
         <div class="nav-tabs" role="tablist">
-            <div class="nav-tab active" role="tab" aria-selected="true" tabindex="0" data-tab="about" id="about-tab">About</div>
-            <div class="nav-tab" role="tab" aria-selected="false" tabindex="0" data-tab="experience" id="experience-tab">Experience</div>
-            <div class="nav-tab" role="tab" aria-selected="false" tabindex="0" data-tab="resume" id="resume-tab">Resume</div>
-            <div class="nav-tab" role="tab" aria-selected="false" tabindex="0" data-tab="contact" id="contact-tab">Contact</div>
-        </div>
-    </div>
-
-    <div id="status-message" style="display: none;" role="alert"></div>
-    <div id="about" class="tab-content active" role="tabpanel">
-        <header class="scroll-animation">
-            <h1>Dean Covrigaru</h1>
-            <p class="typewriter">Computer Science Student & Developer</p>
-        </header>
-        <div class="container">
-            <!-- About Me Section -->
-            <div class="card fade-in">
-                <h2>About Me</h2>
-                <p>I'm a passionate third-year Computer Science student at Toronto Metropolitan University, driven by the endless possibilities of technology and software development. My journey in computer science has equipped me with strong problem-solving skills and a deep understanding of various programming paradigms.</p>
-                <div class="badge-container" style="margin-top: 1rem;">
-                    <span class="badge">Problem Solving</span>
-                    <span class="badge">Software Development</span>
-                    <span class="badge">Algorithm Design</span>
-                    <span class="badge">Data Structures</span>
-                </div>
+            <div class="nav-tab active" role="tab" aria-selected="true" data-tab="about">
+                <i class="fas fa-user"></i>
+                <span>About</span>
             </div>
-    
-            <!-- Education Section -->
-            <div class="card fade-in">
-                <h2>Education</h2>
-                <div style="display: grid; gap: 2rem;">
-                    <div>
-                        <h3>Toronto Metropolitan University</h3>
-                        <p>BSc Honours Computer Science</p>
-                        <p>Expected Graduation: 2026</p>
-                        <p>Notable Coursework:</p>
-                        <div class="badge-container">
-                            <span class="badge">Data Structures</span>
-                            <span class="badge">Algorithms</span>
-                            <span class="badge">Software Engineering</span>
-                            <span class="badge">Database Systems</span>
-                            <span class="badge">Web Systems Development</span>
-                            <span class="badge">Artificial Intelligence</span>
-                        </div>
+            <div class="nav-tab" role="tab" aria-selected="false" data-tab="experience">
+                <i class="fas fa-briefcase"></i>
+                <span>Experience</span>
+            </div>
+            <div class="nav-tab" role="tab" aria-selected="false" data-tab="resume">
+                <i class="fas fa-file-alt"></i>
+                <span>Resume</span>
+            </div>
+            <div class="nav-tab" role="tab" aria-selected="false" data-tab="contact">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </div>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <div id="status-message" class="status-message" role="alert"></div>
+
+    <main>
+        <!-- About Section -->
+        <div id="about" class="tab-content active" role="tabpanel">
+            <header class="hero">
+                <div class="hero-content">
+                    <div class="profile-container">
+                        <img src="/api/placeholder/150/150" alt="Dean Covrigaru" class="profile-image">
+                        <div class="profile-badge">Available for Hire</div>
+                    </div>
+                    <h1 class="glitch" data-text="Dean Covrigaru">Dean Covrigaru</h1>
+                    <div class="typewriter-container">
+                        <span class="typewriter"></span>
+                        <span class="cursor">|</span>
+                    </div>
+                    <div class="hero-badges">
+                        <span class="badge">🎓 Computer Science</span>
+                        <span class="badge">💻 Developer</span>
+                        <span class="badge">🚀 Innovator</span>
                     </div>
                 </div>
-            </div>
-    
-            <!-- Featured Projects Section -->
-            <div class="card fade-in">
-                <h2>Featured Projects</h2>
-                <p><br></p>
-                <div class="project-grid">
-                    <div class="card project-card fade-in">
-                        <a href="https://github.com/Dcovrigaru/CCPS406-Project" class="project-link">
-                            <img src="PythonImage.jpg" alt="Adventure Game Screenshot" class="project-image project-image-small">
-                        </a>
-                        <div class="project-content">
-                            <h3>Text-Based Adventure Game</h3>
-                            <p>An immersive narrative-driven game developed in Python featuring dynamic storylines and character progression.</p>
-                            <div class="badge-container">
-                                <span class="badge">Python</span>
-                                <span class="badge">OOP</span>
-                                <span class="badge">Game Design</span>
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+            </header>
+
+            <div class="container">
+                <section class="about-section card fade-in">
+                    <h2>About Me</h2>
+                    <p class="lead">I'm a passionate third-year Computer Science student at Toronto Metropolitan University, driven by the endless possibilities of technology and software development.</p>
+                    <div class="about-grid">
+                        <div class="about-item">
+                            <i class="fas fa-code"></i>
+                            <h3>Developer</h3>
+                            <p>Creating elegant solutions through code</p>
+                        </div>
+                        <div class="about-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Problem Solver</h3>
+                            <p>Turning complex challenges into simple solutions</p>
+                        </div>
+                        <div class="about-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Innovator</h3>
+                            <p>Always learning and exploring new technologies</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="education-section card fade-in">
+                    <h2>Education</h2>
+                    <div class="education-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Toronto Metropolitan University</h3>
+                                <p class="timeline-date">2022 - 2026 (Expected)</p>
+                                <p>BSc Honours Computer Science</p>
+                                <div class="coursework">
+                                    <h4>Notable Coursework:</h4>
+                                    <div class="badge-container">
+                                        <span class="badge">Data Structures</span>
+                                        <span class="badge">Algorithms</span>
+                                        <span class="badge">Software Engineering</span>
+                                        <span class="badge">Database Systems</span>
+                                        <span class="badge">Web Development</span>
+                                        <span class="badge">AI Fundamentals</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-    
-                    <div class="card project-card fade-in">
-                        <div class="project-content">
-                            <h3>Personal Website Portfolio</h3>
-                            <p>
-                                This! A modern showcase utilizing HTML and custom CSS animations. 
-                                The site highlights my projects and skills with a clean, 
-                                responsive design, featuring interactive elements that enhance 
-                                user engagement. Visitors can easily navigate through various sections, 
-                                each displaying detailed information about my work experience, 
-                                educational background, and personal projects. Interactive elements 
-                                such as hover effects and transitions enhance user engagement, 
-                                providing a visually appealing experience. Additionally, 
-                                the portfolio is optimized for mobile devices, ensuring a seamless 
-                                browsing experience across different screen sizes.
-                            </p>
-                            <div class="badge-container">
-                                <span class="badge">HTML5</span>
-                                <span class="badge">CSS3</span>
-                                <span class="badge">Javascript</span>
+                </section>
+
+                <section class="projects-section">
+                    <h2>Featured Projects</h2>
+                    <div class="project-grid">
+                        <article class="project-card fade-in">
+                            <div class="project-image">
+                                <img src="/api/placeholder/400/300" alt="Adventure Game">
+                                <div class="project-overlay">
+                                    <a href="https://github.com/Dcovrigaru/CCPS406-Project" class="btn-view">
+                                        <i class="fab fa-github"></i> View Project
+                                    </a>
+                                </div>
                             </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-globe"></i> Visit Site</a>
+                            <div class="project-content">
+                                <h3>Text-Based Adventure Game</h3>
+                                <p>An immersive narrative-driven game developed in Python featuring dynamic storylines and character progression.</p>
+                                <div class="badge-container">
+                                    <span class="badge">Python</span>
+                                    <span class="badge">OOP</span>
+                                    <span class="badge">Game Design</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card fade-in">
+                            <div class="project-image">
+                                <img src="/api/placeholder/400/300" alt="Portfolio Website">
+                                <div class="project-overlay">
+                                    <a href="#" class="btn-view">
+                                        <i class="fas fa-globe"></i> Live Demo
+                                    </a>
+                                    <a href="#" class="btn-view">
+                                        <i class="fab fa-github"></i> Source Code
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3>Personal Portfolio Website</h3>
+                                <p>A modern showcase utilizing HTML5, CSS3, and JavaScript with custom animations and responsive design.</p>
+                                <div class="badge-container">
+                                    <span class="badge">HTML5</span>
+                                    <span class="badge">CSS3</span>
+                                    <span class="badge">JavaScript</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience" class="tab-content" role="tabpanel">
+            <div class="container">
+                <section class="experience-section">
+                    <h2>Professional Experience</h2>
+                    <div class="experience-timeline">
+                        <article class="experience-card fade-in">
+                            <div class="experience-header">
+                                <div class="experience-title">
+                                    <h3>Computer Science Instructor</h3>
+                                    <p class="company">Kids Great Minds</p>
+                                </div>
+                                <span class="experience-date">June 2024 - September 2024</span>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Developed and delivered engaging programming curriculum to students aged 5-16</li>
+                                <li>Instructed multiple programming languages including Python, Java, and C++</li>
+                                <li>Achieved positive feedback from students and parents regarding teaching methods</li>
+                            </ul>
+                        </article>
+
+                        <article class="experience-card fade-in">
+                            <div class="experience-header">
+                                <div class="experience-title">
+                                    <h3>Python Developer</h3>
+                                    <p class="company">WebOp</p>
+                                </div>
+                                <span class="experience-date">September 2022 - February 2023</span>
+                            </div>
+                            <ul class="experience-details">
+                                <li>Implemented and maintained Python applications</li>
+                                <li>Reduced bug count by 40% through systematic testing</li>
+                                <li>Collaborated with senior developers on code reviews</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="skills-section">
+                    <h2>Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card fade-in">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>Python</h3>
+                                <p>Advanced</p>
+                                <div class="progress-bar">
+                                    <div class="progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card fade-in">
+                            <div class="skill-icon">
+                                <i class="devicon-cplusplus-plain"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>C++</h3>
+                                <p>Intermediate</p>
+                                <div class="progress-bar">
+                                    <div class="progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card fade-in">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>HTML</h3>
+                                <p>Proficient</p>
+                                <div class="progress-bar">
+                                    <div class="progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card fade-in">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="skill-content">
+                                <h3>SQL</h3>
+                                <p>Advanced</p>
+                                <div class="progress-bar">
+                                    <div class="progress" data-progress="90"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Resume Section -->
+        <div id="resume" class="tab-content" role="tabpanel">
+            <div class="container">
+                <div class="resume-wrapper card">
+                    <iframe id="pdfIframe" src="DeanCovrigaruResumePath.pdf.pdf" title="Resume"></iframe>
+                    <a href="DeanCovrigaruResumePath.pdf.pdf" download class="btn-download">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-    
 
-
-    <!-- Experience Tab -->
-    <div id="experience" class="tab-content" role="tabpanel">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <p><br></p>
-            <div class="card fade-in">
-                <div style="display: flex; justify-content: space-between; align-items: start;">
-                    <div>
-                        <h3>Computer Science Instructor</h3>
-                        <p>Kids Great Minds</p>
-                    </div>
-                    <p>June 2024 - September 2024</p>
-                </div>
-                <ul style="list-style: none; margin-top: 1rem;">
-                    <li>• Developed and delivered engaging programming curriculum to students aged 5-16</li>
-                    <li>• Instructed multiple programming languages including Python, Java, and C++</li>
-                    <li>• Achieved positive feedback from students and parents regarding teaching methods and curriculum</li>
-                </ul>
-            </div>
-
-            <div class="card fade-in">
-                <div style="display: flex; justify-content: space-between; align-items: start;">
-                    <div>
-                        <h3>Python Developer</h3>
-                        <p>WebOp</p>
-                    </div>
-                    <p>September 2022 - February 2023</p>
-                </div>
-                <ul style="list-style: none; margin-top: 1rem;">
-                    <li>• Implemented and maintained Python applications</li>
-                    <li>• Reduced bug count by 40% through systematic testing</li>
-                    <li>• Collaborated with senior developers on code reviews</li>
-                </ul>
-            </div>
-
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="card skill-card fade-in">
-                    <i class="fab fa-python skill-icon"></i>
-                    <div style="flex-grow: 1;">
-                        <h3>Python</h3>
-                        <p>Advanced</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
+        <!-- Contact Section -->
+        <div id="contact" class="tab-content" role="tabpanel">
+            <div class="container">
+                <section class="contact-section">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-grid">
+                        <div class="contact-info card fade-in">
+                            <h3>Contact Information</h3>
+                            <div class="contact-items">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email me at</span>
+                                    <a href="mailto:contact@example.com">contact@example.com</a>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>Connect on</span>
+                                    <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank">LinkedIn</a>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fab fa-github"></i>
+                                    <span>Follow on</span>
+                                    <a href="https://github.com/Dcovrigaru" target="_blank">GitHub</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
+                        <form id="contact-form" class="contact-form card fade-in" onsubmit="return handleSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </section>
 
-                <div class="card skill-card fade-in">
-                    <i class="devicon-cplusplus-plain skill-icon"></i>  
-                    <div style="flex-grow: 1;">
-                        <h3>C++</h3>
-                        <p>Intermediate</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card skill-card fade-in">
-                    <i class="fab fa-html5 skill-icon"></i>
-                    <div style="flex-grow: 1;">
-                        <h3>HTML</h3>
-                        <p>Proficient</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="card skill-card fade-in">
-                    <i class="fas fa-database skill-icon"></i>
-                    <div style="flex-grow: 1;">
-                        <h3>SQL</h3>
-                        <p>Advanced</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
+                <div class="social-links fade-in">
+                    <a href="https://github.com/Dcovrigaru" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Resume Tab -->
-    <div id="resume" class="tab-content" role="tabpanel" style="width: 100%; height: 100vh; overflow: hidden;">
-        <div class="container" style="height: 100%; position: relative; padding-top: 80px;">
-            <iframe id="pdfIframe" src="DeanCovrigaruResumePath.pdf.pdf"
-                style="width: 100%; height: calc(100vh - 80px); border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border-radius: 12px;">
-            </iframe>
-        </div>
-    </div>
-    
-    
-
-
-    <div id="contact" class="tab-content" role="tabpanel">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p><br></p>
-            <div class="contact-form card fade-in">
-                <form id="contact-form" onsubmit="return handleSubmit(event)">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required placeholder="What's this about?">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-
-            <!-- Social Media Buttons -->
-            <div class="social-buttons" style="margin-top: 1.5rem; text-align: center;">
-                <a href="https://github.com/Dcovrigaru" target="_blank" class="social-link" aria-label="GitHub" style="margin: 0 1rem;">
-                    <i class="fab fa-github" style="font-size: 2rem;"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank" class="social-link" aria-label="LinkedIn" style="margin: 0 1rem;">
-                    <i class="fab fa-linkedin" style="font-size: 2rem; color: #0077b5;"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <div class="trademark">
-        &copy; Dean Covrigaru
+        &copy; <script>document.write(new Date().getFullYear())</script> Dean Covrigaru
     </div>
 
     <script>
-        async function handleSubmit(event) {
-            event.preventDefault();
+        // Initialize particles.js
+        particlesJS.load('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#552583"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#552583",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
 
-            // Collect form data
-            const form = document.getElementById('contact-form');
-            const statusMessage = document.getElementById('status-message');
-            
-            try {
-                const result = await emailjs.sendForm('service_1y58kbv', 'template_gg99nfg', form);
-                console.log('Email sent:', result.status, result.text);
-                
-                // Success message
-                statusMessage.textContent = 'Message sent successfully!';
-                statusMessage.style.display = 'block';
-                form.reset(); // Clear form
-            } catch (error) {
-                console.error('Error sending email:', error);
-                statusMessage.textContent = 'Error sending message. Please try again later.';
-                statusMessage.style.color = 'red';
-                statusMessage.style.display = 'block';
-            }
-        }
+        // Loading screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.querySelector('.loading-screen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        });
+
         // Tab switching functionality
         const tabs = document.querySelectorAll('.nav-tab');
         const tabContents = document.querySelectorAll('.tab-content');
+
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 // Remove active class from all tabs and contents
@@ -297,14 +436,122 @@
                     content.classList.remove('active');
                     content.style.display = 'none';
                 });
+
                 // Add active class to clicked tab and corresponding content
                 tab.classList.add('active');
                 const content = document.getElementById(tab.dataset.tab);
                 content.style.display = 'block';
                 setTimeout(() => content.classList.add('active'), 50);
+
+                // Reset and trigger animations for the new tab
+                const fadeElements = content.querySelectorAll('.fade-in');
+                fadeElements.forEach(el => {
+                    el.classList.remove('visible');
+                    void el.offsetWidth; // Trigger reflow
+                    el.classList.add('visible');
+                });
+
+                // Animate progress bars if in experience tab
+                if (tab.dataset.tab === 'experience') {
+                    animateProgressBars();
+                }
             });
         });
-    
+
+        // Typewriter effect
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typewriter
+        const typewriterElement = document.querySelector('.typewriter');
+        const phrases = [
+            'Computer Science Student',
+            'Software Developer',
+            'Problem Solver',
+            'Tech Enthusiast'
+        ];
+        let phraseIndex = 0;
+
+        function typeNextPhrase() {
+            typeWriter(typewriterElement, phrases[phraseIndex], 100);
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(typeNextPhrase, 4000);
+        }
+
+        typeNextPhrase();
+
+        // Theme toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const root = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            root.classList.toggle('dark-theme');
+            const icon = themeToggle.querySelector('i');
+            if (root.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Contact form submission
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contact-form');
+            const statusMessage = document.getElementById('status-message');
+            
+            try {
+                const result = await emailjs.sendForm('service_1y58kbv', 'template_gg99nfg', form);
+                console.log('Email sent:', result.status, result.text);
+                
+                statusMessage.textContent = 'Message sent successfully!';
+                statusMessage.classList.add('success');
+                statusMessage.style.display = 'block';
+                form.reset();
+                
+                setTimeout(() => {
+                    statusMessage.style.display = 'none';
+                    statusMessage.classList.remove('success');
+                }, 5000);
+            } catch (error) {
+                console.error('Error sending email:', error);
+                statusMessage.textContent = 'Error sending message. Please try again later.';
+                statusMessage.classList.add('error');
+                statusMessage.style.display = 'block';
+                
+                setTimeout(() => {
+                    statusMessage.style.display = 'none';
+                    statusMessage.classList.remove('error');
+                }, 5000);
+            }
+        }
+
+        // Progress bar animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                const progress = bar.dataset.progress;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = `${progress}%`;
+                }, 200);
+            });
+        }
+
         // Intersection Observer for fade-in animations
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver(entries => {
@@ -314,47 +561,25 @@
                 }
             });
         }, { threshold: 0.1 });
+
         fadeElements.forEach(element => observer.observe(element));
-    
-        // Typewriter effect for header subtitle
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.textContent = '';
-    
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
+
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate elements on scroll
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.from(element, {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
                 }
-            }
-    
-            type();
-        }
-    
-        // Initialize typewriter effect
-        const typewriterElement = document.querySelector('.typewriter');
-        typeWriter(typewriterElement, 'Computer Science Student & Developer');
-    
-        // Progress bar animation
-        function animateProgressBars() {
-            const progressBars = document.querySelectorAll('.progress');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 200);
             });
-        }
-    
-        // Initialize progress bars when experience tab is shown
-        document.querySelector('[data-tab="experience"]').addEventListener('click', animateProgressBars);
+        });
     </script>
-    </body>
-    </html>
-    
 </body>
 </html>
-
-
