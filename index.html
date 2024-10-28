@@ -100,7 +100,6 @@
             <header class="hero">
                 <div class="hero-content">
                     <div class="profile-container">
-                        <img src="/api/placeholder/150/150" alt="Dean Covrigaru" class="profile-image">
                         <div class="profile-badge">Available for Hire</div>
                     </div>
                     <h1 class="glitch" data-text="Dean Covrigaru">Dean Covrigaru</h1>
@@ -170,7 +169,7 @@
                     </div>
                 </section>
 
-                <section class="projects-section">
+                <section class="projects-section card fade-in">
                     <h2>Featured Projects</h2>
                     <div class="project-grid">
                         <article class="project-card fade-in">
@@ -460,7 +459,7 @@
     // Loading screen
     const loadingScreen = document.querySelector('.loading-screen');
     if (loadingScreen) {
-        loadingScreen.style.opacity = '0';
+        loadingScreen.style.opacity = '1';
         setTimeout(() => {
             loadingScreen.style.display = 'none';
         }, 500);
@@ -645,7 +644,7 @@
         gsap.utils.toArray('.fade-in').forEach(element => {
             gsap.from(element, {
                 y: 50,
-                opacity: 0,
+                opacity: 1,
                 duration: 1,
                 scrollTrigger: {
                     trigger: element,
