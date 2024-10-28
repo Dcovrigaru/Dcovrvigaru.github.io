@@ -347,27 +347,46 @@
                 <section class="contact-section">
                     <h2>Get In Touch</h2>
                     <div class="contact-grid">
-                        <div class="contact-info card fade-in">
-                            <h3>Contact Information</h3>
-                            <div class="contact-items">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email me at</span>
-                                    <a href="mailto:contact@example.com">contact@example.com</a>
-                                </div>
+                        <!-- here-->
+                        
+                        <!-- Replace your current contact-info card with this -->
+                       <!-- Replace your current contact-info card with this -->
+<div class="contact-info card fade-in">
+    <h3>Contact Information</h3>
+    <div class="contact-items">
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>Email me at</span>
+            <a href="mailto:contact@example.com">contact@example.com</a>
+        </div>
+        
+        <!-- LinkedIn with profile preview -->
                                 <div class="contact-item">
                                     <i class="fab fa-linkedin"></i>
-                                    <span>Connect on</span>
-                                    <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank">LinkedIn</a>
+                                    <a href="https://www.linkedin.com/in/dean-covrigaru/" 
+                                    target="_blank" 
+                                    class="profile-preview-link">
+                                        
+                                        <span>linkedin.com/in/dean-covrigaru</span>
+                                    </a>
                                 </div>
+        
+        <!-- GitHub with profile preview -->
                                 <div class="contact-item">
                                     <i class="fab fa-github"></i>
-                                    <span>Follow on</span>
-                                    <a href="https://github.com/Dcovrigaru" target="_blank">GitHub</a>
+                                    <a href="https://github.com/Dcovrigaru" 
+                                    target="_blank"
+                                    class="profile-preview-link">
+                                        <img 
+                                            src="https://github-readme-stats.vercel.app/api?username=Dcovrigaru&show_icons=true&theme=default" 
+                                            alt="GitHub Profile Stats"
+                                            class="profile-preview github"
+                                        />
+                                        <span>github.com/Dcovrigaru</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
                         <form id="contact-form" class="contact-form card fade-in" onsubmit="return handleSubmit(event)">
                             <div class="form-group">
                                 <label for="name">Name</label>
