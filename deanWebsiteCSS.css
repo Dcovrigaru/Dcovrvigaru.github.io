@@ -53,14 +53,109 @@ main {
     z-index: -1;
 }
 /* Dark Theme Variables */
+/* Dark Theme Variables */
 .dark-theme {
-    --text-color: #f3f4f6;
-    --text-light: #d1d5db;
-    --card-bg: rgba(17, 24, 39, 0.95);
-    --nav-bg: rgba(17, 24, 39, 0.9);
-    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+    /* Text Colors */
+    --text-color: #f3f4f6;         /* Main text color */
+    --text-light: #d1d5db;         /* Secondary text color */
+    
+    /* Background Colors */
+    --card-bg: rgba(17, 24, 39, 0.95);    /* Card background */
+    --nav-bg: rgba(17, 24, 39, 0.9);      /* Navigation background */
+    --light-bg: #111827;                  /* Main background */
+    
+    /* UI Elements */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 
+                  0 2px 4px -2px rgba(0, 0, 0, 0.2);
+    
+    /* You can also customize specific component colors */
+    --primary-color: #8b5cf6;      /* Modify if you want different accent in dark mode */
+    --secondary-color: #7c3aed;    /* Secondary accent color */
+    
+    /* Form Elements */
+    --input-bg: rgba(17, 24, 39, 0.8);
+    --input-border: rgba(255, 255, 255, 0.1);
+    --input-text: #f3f4f6;
+    
+    /* Progress Bars */
+    --progress-bg: rgba(255, 255, 255, 0.1);
+    
+    /* Badge Colors */
+    --badge-bg: rgba(255, 255, 255, 0.1);
+    --badge-text: #f3f4f6;
 }
 
+/* Additional dark theme specific styles */
+.dark-theme .card {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .progress-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .skill-icon {
+    color: var(--primary-color);
+}
+
+.dark-theme .nav-tab:not(.active) {
+    color: var(--text-light);
+}
+
+.dark-theme .nav-tab:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .form-group input,
+.dark-theme .form-group textarea {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-text);
+}
+
+.dark-theme .badge {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+}
+
+/* Particles.js dark theme colors */
+.dark-theme #particles-js {
+    background-color: var(--light-bg);
+}
+
+/* Status message colors in dark theme */
+.dark-theme .status-message {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* Social links in dark theme */
+.dark-theme .social-links a {
+    color: var(--text-light);
+}
+
+.dark-theme .social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Additional hover effects for dark theme */
+.dark-theme .card:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Experience section specific dark theme styling */
+.dark-theme .experience-card {
+    background-color: var(--card-bg);
+}
+
+.dark-theme .experience-date {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dark-theme .experience-details li:before {
+    color: var(--primary-color);
+}
 /* Base Styles */
 * {
     margin: 0;
@@ -108,7 +203,67 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+.contact-item .profile-preview-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    width: 100%;
+}
 
+.profile-preview {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-preview:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-preview.linkedin {
+    background: #fff;
+}
+
+.profile-preview.linkedin iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-preview.github {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    padding: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.contact-item i {
+    width: 24px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-top: 4px;
+}
+
+/* Dark theme adjustments */
+.dark-theme .profile-preview {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .profile-preview:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
 /* Navigation */
 .nav-container {
     background: var(--nav-bg);
