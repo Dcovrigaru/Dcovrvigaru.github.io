@@ -1,673 +1,1129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dean Covrigaru | Computer Science Portfolio</title>
-    <meta name="description" content="Dean Covrigaru's portfolio showcasing skills, experiences, and projects as a Computer Science student at Toronto Metropolitan University.">
-    <meta name="keywords" content="Computer Science, Portfolio, Dean Covrigaru, Projects, Experience, Education">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css">
-    <!-- Change to this -->
-    <link rel="stylesheet" href="./deanWebsiteCSS.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" defer></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            emailjs.init("KTZYiBH7VkXlcPKhy");
-        });
-    </script>
-</head>
-<body>
-    <div id="particles-js"></div>
-    <div class="loading-screen">
-        <div class="loader"></div>
-    </div>
-
-    <nav class="nav-container" role="navigation" aria-label="Main Navigation">
-        <!-- Logo/Brand -->
-        <div class="nav-brand" onclick="window.location.href='#'">
-            <span class="logo-text">DC</span>
-        </div>
+:root {
+    /* Core Colors */
+    --primary-color: #552583;
+    --secondary-color: #FDB927;
+    --accent-color: #FDB927;
+    --text-color: #1f2937;
+    --text-light: #6b7280;
+    --light-bg: #ffffff;
+    --dark-bg: #111827;
+    --success-color: #10b981;
+    --error-color: #ef4444;
     
-        <!-- Main Navigation Tabs -->
-        <div class="nav-tabs" role="tablist">
-            <!-- About Tab -->
-            <div class="nav-tab active" 
-                 role="tab" 
-                 aria-selected="true" 
-                 data-tab="about"
-                 tabindex="0">
-                <i class="fas fa-user" aria-hidden="true"></i>
-                <span>About</span>
-            </div>
+    /* UI Elements */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     
-            <!-- Experience Tab -->
-            <div class="nav-tab" 
-                 role="tab" 
-                 aria-selected="false" 
-                 data-tab="experience"
-                 tabindex="0">
-                <i class="fas fa-briefcase" aria-hidden="true"></i>
-                <span>Experience</span>
-            </div>
+    /* Transitions */
+    --transition-speed: 0.3s;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
     
-            <!-- Resume Tab -->
-            <div class="nav-tab" 
-                 role="tab" 
-                 aria-selected="false" 
-                 data-tab="resume"
-                 tabindex="0">
-                <i class="fas fa-file-alt" aria-hidden="true"></i>
-                <span>Resume</span>
-            </div>
+    /* Spacing */
+    --border-radius: 8px;
+    --section-spacing: 4rem;
+    --card-padding: 2rem;
     
-            <!-- Contact Tab -->
-            <div class="nav-tab" 
-                 role="tab" 
-                 aria-selected="false" 
-                 data-tab="contact"
-                 tabindex="0">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-                <span>Contact</span>
-            </div>
-        </div>
+    /* Typography */
+    --font-regular: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Add these to your existing root variables */
+    --primary-color-rgb: 85, 37, 131;  /* This is the RGB value of #552583 */
     
-        <!-- Theme Toggle Button -->
-        <button class="theme-toggle" 
-                aria-label="Toggle dark theme" 
-                title="Toggle dark mode">
-            <i class="fas fa-moon" aria-hidden="true"></i>
-        </button>
-    </nav>
-    
-    <!-- Status Message Container -->
-    <div id="status-message" 
-         class="status-message" 
-         role="alert" 
-         aria-live="polite">
-    </div>
-    
-    <!-- Mobile Menu Overlay (for mobile navigation) -->
-    <div class="mobile-menu-overlay" aria-hidden="true"></div>
+    /* Navigation specific */
+    --nav-height: 80px;
+    --mobile-nav-height: 60px;
 
-    <main>
-        <!-- About Section -->
-        <div id="about" class="tab-content active" role="tabpanel">
-            <header class="hero">
-                <div class="hero-content">
-                    <div class="profile-container">
-                        <img src="/api/placeholder/150/150" alt="Dean Covrigaru" class="profile-image">
-                        <div class="profile-badge">Available for Hire</div>
-                    </div>
-                    <h1 class="glitch" data-text="Dean Covrigaru">Dean Covrigaru</h1>
-                    <div class="typewriter-container">
-                        <span class="typewriter"></span>
-                        <span class="cursor">|</span>
-                    </div>
-                    <div class="hero-badges">
-                        <span class="badge">🎓 Computer Science</span>
-                        <span class="badge">💻 Developer</span>
-                        <span class="badge">🚀 Innovator</span>
-                    </div>
-                </div>
-                <div class="scroll-indicator">
-                    <div class="mouse">
-                        <div class="wheel"></div>
-                    </div>
-                    <div class="arrow"></div>
-                </div>
-            </header>
 
-            <div class="container">
-                <section class="about-section card fade-in">
-                    <h2>About Me</h2>
-                    <p class="lead">I'm a passionate third-year Computer Science student at Toronto Metropolitan University, driven by the endless possibilities of technology and software development.</p>
-                    <div class="about-grid">
-                        <div class="about-item">
-                            <i class="fas fa-code"></i>
-                            <h3>Developer</h3>
-                            <p>Creating elegant solutions through code</p>
-                        </div>
-                        <div class="about-item">
-                            <i class="fas fa-laptop-code"></i>
-                            <h3>Problem Solver</h3>
-                            <p>Turning complex challenges into simple solutions</p>
-                        </div>
-                        <div class="about-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <h3>Innovator</h3>
-                            <p>Always learning and exploring new technologies</p>
-                        </div>
-                    </div>
-                </section>
 
-                <section class="education-section card fade-in">
-                    <h2>Education</h2>
-                    <div class="education-timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Toronto Metropolitan University</h3>
-                                <p class="timeline-date">2022 - 2026 (Expected)</p>
-                                <p>BSc Honours Computer Science</p>
-                                <div class="coursework">
-                                    <h4>Notable Coursework:</h4>
-                                    <div class="badge-container">
-                                        <span class="badge">Data Structures</span>
-                                        <span class="badge">Algorithms</span>
-                                        <span class="badge">Software Engineering</span>
-                                        <span class="badge">Database Systems</span>
-                                        <span class="badge">Web Development</span>
-                                        <span class="badge">AI Fundamentals</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+}
+main {
+    position: relative;
+    z-index: 1;
+}
 
-                <section class="projects-section card fade-in">
-                    <h2>Featured Projects</h2>
-                    <div class="project-grid">
-                        <article class="project-card fade-in">
-                            <div class="project-content">
-                                <h3>Text-Based Adventure Game</h3>
-                                <p>
-                                    Developed a text-based adventure game in Python, showcasing skills in game development, modular architecture, and data management. 
-                                    Implemented an interactive game engine with features such as player actions, room navigation, dynamic combat, and autonomous non-player characters. 
-                                    Utilized JSON data structures for efficient game data storage and management. 
-                                    Optimized game performance and conducted thorough testing to ensure a smooth user experience. 
-                                    Demonstrated proficiency in Python programming, problem-solving, and creating engaging gameplay mechanics.
-                                </p>                                
-                                
-                                <div class="badge-container">
-                                    <span class="badge">Python</span>
-                                    <span class="badge">OOP</span>
-                                    <span class="badge">Game Design</span>
-                                </div>
-                            </div>
+/* Make sure particles are behind everything */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+/* Dark Theme Variables */
+.dark-theme {
+    --text-color: #f3f4f6;
+    --text-light: #d1d5db;
+    --card-bg: rgba(17, 24, 39, 0.95);
+    --nav-bg: rgba(17, 24, 39, 0.9);
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
 
-                            <a href="https://github.com/Dcovrigaru/CCPS406-Project" class="project-image-link">
-                                <div class="project-image">
-                                    <img src="PythonImage.jpg" alt="Adventure Game">    
-                                </div>
-                            </a>
-                        </article>
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-                        <article class="project-card fade-in">
-                            <div class="project-image">
-                                
-                            </div>
-                            <div class="project-content">
-                                <h3>Personal Portfolio Website</h3>
-                                <p>
-                                    This! A modern showcase utilizing HTML and custom CSS animations. 
-                                    The site highlights my projects and skills with a clean, 
-                                    responsive design, featuring interactive elements that enhance 
-                                    user engagement. Visitors can easily navigate through various sections, 
-                                    each displaying detailed information about my work experience, 
-                                    educational background, and personal projects. Interactive elements 
-                                    such as hover effects and transitions enhance user engagement, 
-                                    providing a visually appealing experience. Additionally, 
-                                    the portfolio is optimized for mobile devices, ensuring a seamless 
-                                    browsing experience across different screen sizes. 
-                                </p>
-                                <a href="https://github.com/Dcovrigaru/website" target="_blank" class="btn-view">
-                                    <i class="fab fa-github"></i> Source Code
-                                </a>
-                                <div class="badge-container">
-                                    <span class="badge">HTML5</span>
-                                    <span class="badge">CSS3</span>
-                                    <span class="badge">JavaScript</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-            </div>
-        </div>
+html {
+    scroll-behavior: smooth;
+}
 
-        <!-- Experience Section -->
-        <div id="experience" class="tab-content" role="tabpanel">
-            <div class="container">
-                <section class="experience-section">
-                    <h2>Professional Experience</h2>
-                    <div class="experience-timeline">
-                        <article class="experience-card fade-in">
-                            <div class="experience-header">
-                                <div class="experience-title">
-                                    <h3>Computer Science Instructor</h3>
-                                    <p class="company">Kids Great Minds</p>
-                                </div>
-                                <span class="experience-date">June 2024 - September 2024</span>
-                            </div>
-                            <ul class="experience-details">
-                                <li>Developed and delivered engaging programming curriculum to students aged 5-16</li>
-                                <li>Instructed multiple programming languages including Python, Java, and C++</li>
-                                <li>Achieved positive feedback from students and parents regarding teaching methods</li>
-                            </ul>
-                        </article>
+body {
+    font-family: var(--font-regular);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: var(--nav-height);
+}
 
-                        <article class="experience-card fade-in">
-                            <div class="experience-header">
-                                <div class="experience-title">
-                                    <h3>Python Developer</h3>
-                                    <p class="company">WebOp</p>
-                                </div>
-                                <span class="experience-date">September 2022 - February 2023</span>
-                            </div>
-                            <ul class="experience-details">
-                                <li>Implemented and maintained Python applications</li>
-                                <li>Reduced bug count by 40% through systematic testing</li>
-                                <li>Collaborated with senior developers on code reviews</li>
-                            </ul>
-                        </article>
-                    </div>
-                </section>
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--light-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
 
-                <section class="skills-section">
-                    <h2>Technical Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-card fade-in">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <div class="skill-content">
-                                <h3>Python</h3>
-                                <p>Advanced</p>
-                                <div class="progress-bar">
-                                    <div class="progress" data-progress="90"></div>
-                                </div>
-                            </div>
-                        </div>
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--primary-color);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+}
 
-                        <div class="skill-card fade-in">
-                            <div class="skill-icon">
-                                <i class="devicon-cplusplus-plain"></i>
-                            </div>
-                            <div class="skill-content">
-                                <h3>C++</h3>
-                                <p>Intermediate</p>
-                                <div class="progress-bar">
-                                    <div class="progress" data-progress="75"></div>
-                                </div>
-                            </div>
-                        </div>
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-                        <div class="skill-card fade-in">
-                            <div class="skill-icon">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <div class="skill-content">
-                                <h3>HTML</h3>
-                                <p>Proficient</p>
-                                <div class="progress-bar">
-                                    <div class="progress" data-progress="85"></div>
-                                </div>
-                            </div>
-                        </div>
+/* Navigation */
+.nav-container {
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-                        <div class="skill-card fade-in">
-                            <div class="skill-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="skill-content">
-                                <h3>SQL</h3>
-                                <p>Advanced</p>
-                                <div class="progress-bar">
-                                    <div class="progress" data-progress="90"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: -0.05em;
+}
 
-        <!-- Resume Section -->
-        <div id="resume" class="tab-content" role="tabpanel">
-            <div class="container">
-                <div class="resume-wrapper card">
-                    <iframe id="pdfIframe" src="DeanCovrigaruResumePath.pdf.pdf" title="Resume"></iframe>
-                    <a href="DeanCovrigaruResumePath.pdf.pdf" download class="btn-download">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
-                </div>
-            </div>
-        </div>
+.nav-tabs {
+    display: flex;
+    gap: 1rem;
+    margin: 0 auto;
+}
 
-        <!-- Contact Section -->
-        <div id="contact" class="tab-content" role="tabpanel">
-            <div class="container">
-                <section class="contact-section">
-                    <h2>Get In Touch</h2>
-                    <div class="contact-grid">
-                        <div class="contact-info card fade-in">
-                            <h3>Contact Information</h3>
-                            <div class="contact-items">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email me at</span>
-                                    <a href="mailto:contact@example.com">contact@example.com</a>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>Connect on</span>
-                                    <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank">LinkedIn</a>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fab fa-github"></i>
-                                    <span>Follow on</span>
-                                    <a href="https://github.com/Dcovrigaru" target="_blank">GitHub</a>
-                                </div>
-                            </div>
-                        </div>
+.nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-timing);
+    font-weight: 500;
+    color: var(--text-color);
+}
 
-                        <form id="contact-form" class="contact-form card fade-in" onsubmit="return handleSubmit(event)">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">
-                                <span>Send Message</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </section>
+.nav-tab i {
+    font-size: 1.1rem;
+}
 
-                <div class="social-links fade-in">
-                    <a href="https://github.com/Dcovrigaru" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/dean-covrigaru/" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+.nav-tab:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
 
-    <div class="trademark">
-        &copy; <script>document.write(new Date().getFullYear())</script> Dean Covrigaru
-    </div>
+.nav-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+/* Tab Content Styles */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    // Initialize particles.js
-    particlesJS('particles-js', {
-        "particles": {
-            "number": {
-                "value": 80,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#552583"
-            },
-            "shape": {
-                "type": "circle"
-            },
-            "opacity": {
-                "value": 0.5,
-                "random": false
-            },
-            "size": {
-                "value": 3,
-                "random": true
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#552583",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 2,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "grab"
-                },
-                "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                },
-                "resize": true
-            }
-        },
-        "retina_detect": true
-    });
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
 
-    // Loading screen
-    const loadingScreen = document.querySelector('.loading-screen');
-    if (loadingScreen) {
-        loadingScreen.style.opacity = '1';
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+/* Make sure About tab is visible by default */
+#about.tab-content {
+    display: block;
+    opacity: 1;
+}
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 2rem;
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.1;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 1;
+}
+
+.profile-container {
+    position: relative;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.profile-image:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.profile-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--success-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transform: translateY(50%);
+    box-shadow: var(--card-shadow);
+}
+
+.glitch {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                -0.05em -0.025em 0 rgba(0,255,0,0.75),
+                0.025em 0.05em 0 rgba(0,0,255,0.75);
+    animation: glitch 500ms infinite;
+}
+
+.glitch span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                    -0.05em -0.025em 0 rgba(0,255,0,0.75),
+                    0.025em 0.05em 0 rgba(0,0,255,0.75);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                    -0.05em -0.025em 0 rgba(0,255,0,0.75),
+                    0.025em 0.05em 0 rgba(0,0,255,0.75);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75),
+                    0.025em 0.025em 0 rgba(0,255,0,0.75),
+                    -0.05em -0.05em 0 rgba(0,0,255,0.75);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75),
+                    0.025em 0.025em 0 rgba(0,255,0,0.75),
+                    -0.05em -0.05em 0 rgba(0,0,255,0.75);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75),
+                    0.05em 0 0 rgba(0,255,0,0.75),
+                    0 -0.05em 0 rgba(0,0,255,0.75);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75),
+                    0.05em 0 0 rgba(0,255,0,0.75),
+                    0 -0.05em 0 rgba(0,0,255,0.75);
+    }
+    100% {
+        text-shadow: -0.025em 0 0 rgba(255,0,0,0.75),
+                    -0.025em -0.025em 0 rgba(0,255,0,0.75),
+                    -0.025em -0.05em 0 rgba(0,0,255,0.75);
+    }
+}
+
+.typewriter-container {
+    margin: 1rem 0 2rem;
+    height: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.typewriter {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.cursor {
+    font-weight: 700;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 1; }
+}
+
+.hero-badges {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 15px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: white;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(20px); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Container and Cards */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: var(--card-padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Section Styles */
+.about-section,
+.education-section,
+.projects-section,
+.experience-section,
+.skills-section,
+.contact-section {
+    margin-bottom: var(--section-spacing);
+}
+
+/* About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.about-item {
+    text-align: center;
+    padding: 2rem;
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.about-item:hover {
+    transform: translateY(-10px);
+}
+
+.about-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Timeline */
+.education-timeline,
+/* Experience Section Styling */
+.experience-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Increased from 300px to 400px */
+    gap: 2.5rem; /* Increased gap */
+    padding-left: 0;
+}
+
+.experience-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2.5rem; /* Increased from 1.5rem */
+    position: relative;
+    min-height: 300px; /* Added minimum height */
+}
+
+.experience-card:hover {
+    transform: translateY(-8px); /* Increased lift effect */
+    box-shadow: var(--hover-shadow);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem; /* Increased margin */
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.experience-title h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.75rem; /* Increased font size */
+    font-weight: 600;
+}
+
+.company {
+    color: var(--text-light);
+    font-size: 1.1rem; /* Increased font size */
+    margin-bottom: 0.5rem;
+}
+
+.experience-date {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem; /* Increased padding */
+    border-radius: var(--border-radius);
+    font-size: 1rem; /* Increased font size */
+    font-weight: 500;
+}
+
+.experience-details {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.experience-details li {
+    margin-bottom: 1rem; /* Increased margin */
+    padding-left: 2rem; /* Increased padding */
+    position: relative;
+    font-size: 1.1rem; /* Increased font size */
+    line-height: 1.6;
+}
+
+.experience-details li:before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem; /* Increased bullet size */
+    top: -0.2rem;
+}
+
+/* Add more emphasis to the gradient border */
+.experience-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius);
+    padding: 3px; /* Increased border width */
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.experience-card:hover::before {
+    opacity: 1;
+}
+
+/* Make sure section title is also larger */
+.experience-section h2 {
+    font-size: 2.5rem; /* Increased section title size */
+    margin-bottom: 2.5rem; /* Increased margin */
+    color: var(--primary-color);
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .experience-timeline {
+        grid-template-columns: 1fr; /* Single column on mobile */
     }
 
-    // Tab switching functionality
-    const tabs = document.querySelectorAll('.nav-tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    function switchTab(targetTab) {
-        const targetId = targetTab.dataset.tab;
-        
-        // Remove active class from all tabs and contents
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-            content.style.display = 'none';
-        });
-
-        // Add active class to clicked tab
-        targetTab.classList.add('active');
-
-        // Show corresponding content
-        const targetContent = document.getElementById(targetId);
-        if (targetContent) {
-            targetContent.style.display = 'block';
-            setTimeout(() => targetContent.classList.add('active'), 50);
-
-            // Reset and trigger animations
-            const fadeElements = targetContent.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => {
-                el.classList.remove('visible');
-                void el.offsetWidth; // Trigger reflow
-                el.classList.add('visible');
-            });
-
-            // Animate progress bars if in experience tab
-            if (targetId === 'experience') {
-                animateProgressBars();
-            }
-        }
+    .experience-card {
+        padding: 2rem;
+        min-height: auto;
     }
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => switchTab(tab));
-    });
-
-    // Initialize with default tab
-    const defaultTab = document.querySelector('.nav-tab.active');
-    if (defaultTab) {
-        switchTab(defaultTab);
+    .experience-title h3 {
+        font-size: 1.5rem;
     }
 
-    // Typewriter effect
-    const typewriterElement = document.querySelector('.typewriter');
-    const phrases = [
-        'Computer Science Student',
-        'Software Developer',
-        'Problem Solver',
-        'Tech Enthusiast'
-    ];
-    let phraseIndex = 0;
+    .experience-details li {
+        font-size: 1rem;
+    }
+}
 
-    function typeWriter(element, text, speed = 100) {
-        if (!element) return;
-        
-        let i = 0;
-        element.textContent = '';
-        
-        function type() {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        
-        type();
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -2rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+.timeline-marker::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    bottom: -2rem;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item:last-child .timeline-marker::before {
+    display: none;
+}
+
+/* Projects Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    overflow: hidden;
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s var(--transition-timing);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    opacity: 1;
+    transition: opacity var(--transition-speed) var(--transition-timing);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.btn-view {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.btn-view:hover {
+    transform: translateY(-2px);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.skill-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.skill-card:hover .skill-icon {
+    transform: rotate(360deg) scale(1.2);
+}
+
+.skill-content {
+    flex-grow: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s var(--transition-timing);
+    position: relative;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-info {
+    padding: 2rem;
+}
+
+.contact-items {
+    margin-top: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.contact-form {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid transparent;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) var(--transition-timing);
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-timing);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: all var(--transition-speed) var(--transition-timing);
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* Resume Section */
+.resume-wrapper {
+    position: relative;
+    height: calc(100vh - 200px);
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+#pdfIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.btn-download {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-speed) var(--transition-timing);
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Status Message */
+.status-message {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    background: white;
+    box-shadow: var(--card-shadow);
+    z-index: 1000;
+    display: none;
+    animation: slideIn 0.3s ease;
+}
+
+.status-message.success {
+    background: var(--success-color);
+    color: white;
+}
+
+.status-message.error {
+    background: var(--error-color);
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Fade In Animation */
+.fade-in {
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    margin: 0.25rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.badge:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Trademark */
+.trademark {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem;
     }
 
-    function typeNextPhrase() {
-        if (!typewriterElement) return;
-        
-        typeWriter(typewriterElement, phrases[phraseIndex], 100);
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(typeNextPhrase, 4000);
+    .nav-tabs {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        padding: 0.5rem;
+        justify-content: space-around;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    typeNextPhrase();
-
-    // Theme toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    const root = document.documentElement;
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            root.classList.toggle('dark-theme');
-            const icon = themeToggle.querySelector('i');
-            if (icon) {
-                if (root.classList.contains('dark-theme')) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
-            }
-        });
+    .nav-tab {
+        flex-direction: column;
+        padding: 0.5rem;
+        font-size: 0.75rem;
     }
 
-    // Progress bar animation
-    function animateProgressBars() {
-        const progressBars = document.querySelectorAll('.progress');
-        progressBars.forEach(bar => {
-            const progress = bar.dataset.progress;
-            bar.style.width = '0%';
-            setTimeout(() => {
-                bar.style.width = `${progress}%`;
-            }, 200);
-        });
+    .nav-tab span {
+        display: none;
     }
 
-    // Contact form submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const statusMessage = document.getElementById('status-message');
-            
-            try {
-                const result = await emailjs.sendForm('service_1y58kbv', 'template_gg99nfg', contactForm);
-                console.log('Email sent:', result.status, result.text);
-                
-                if (statusMessage) {
-                    statusMessage.textContent = 'Message sent successfully!';
-                    statusMessage.classList.add('success');
-                    statusMessage.style.display = 'block';
-                }
-                
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    if (statusMessage) {
-                        statusMessage.style.display = 'none';
-                        statusMessage.classList.remove('success');
-                    }
-                }, 5000);
-            } catch (error) {
-                console.error('Error sending email:', error);
-                
-                if (statusMessage) {
-                    statusMessage.textContent = 'Error sending message. Please try again later.';
-                    statusMessage.classList.add('error');
-                    statusMessage.style.display = 'block';
-                    
-                    setTimeout(() => {
-                        statusMessage.style.display = 'none';
-                        statusMessage.classList.remove('error');
-                    }, 5000);
-                }
-            }
-        });
+    .hero {
+        padding: 4rem 1rem;
     }
 
-    // Intersection Observer for fade-in animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    fadeElements.forEach(element => observer.observe(element));
-
-    // Initialize GSAP ScrollTrigger
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Animate elements on scroll
-        gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.from(element, {
-                y: 50,
-                opacity: 1,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        });
+    .glitch {
+        font-size: 2rem;
     }
-});
-       
-    </script>
-</body>
-</html>
+
+    .project-grid,
+    .skills-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        margin-top: 2rem;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+    }
+
+    .trademark {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .hero-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-content {
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Adjust Hero Padding for Medium-Sized Screens */
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    /* Disable complex animations for better performance */
+    .glitch {
+        animation: none; /* Disables the glitch animation */
+    }
+
+    .profile-image {
+        transition: none; /* Simplify hover effect on profile image */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further reduce Hero padding for small screens */
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    /* Font size adjustments for smaller screens */
+    .glitch {
+        font-size: 1.75rem;
+    }
+
+    .nav-tabs {
+        font-size: 0.65rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Increase button tap area for accessibility */
+    .btn-submit, .btn-download {
+        padding: 1.25rem 1.75rem; /* Increase padding */
+        font-size: 1rem;
+    }
+
+    .nav-tab {
+        padding: 1rem; /* Make the nav tabs larger */
+    }
+
+    /* Improve form spacing for smaller screens */
+    .form-group input, .form-group textarea {
+        padding: 1rem; /* Increase padding for usability */
+    }
+
+    .form-group {
+        margin-bottom: 2rem; /* Increase spacing between form fields */
+    }
+
+    /* Simplify shadows and filters for mobile performance */
+    .card {
+        box-shadow: none; /* Remove shadow for mobile */
+    }
+
+    .nav-container {
+        backdrop-filter: none; /* Remove backdrop filter */
+    }
+
+    /* Make navigation non-fixed for smaller screens */
+    .nav-container {
+        position: relative;
+    }
+
+    /* Reduce size of status messages */
+    .status-message {
+        width: 90%;
+    }
+
+    /* Responsive single-column grids */
+    .project-grid, .skills-grid, .contact-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    /* Hero padding and font size adjustments for landscape mode */
+    .hero {
+        padding: 3rem 1.5rem;
+    }
+
+    .glitch {
+        font-size: 2rem;
+    }
+
+    .btn-submit, .btn-download {
+        padding: 1rem 1.25rem;
+    }
+}
+
+
+/* Animations for Dark Mode transition */
+.dark-theme .card,
+.dark-theme .nav-container,
+.dark-theme .form-group input,
+.dark-theme .form-group textarea {
+    transition: background-color var(--transition-speed) var(--transition-timing),
+                color var(--transition-speed) var(--transition-timing),
+                border-color var(--transition-speed) var(--transition-timing);
+}
