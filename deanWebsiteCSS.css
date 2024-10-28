@@ -447,9 +447,129 @@ body {
 
 /* Timeline */
 .education-timeline,
+/* Experience Section Styling */
 .experience-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Increased from 300px to 400px */
+    gap: 2.5rem; /* Increased gap */
+    padding-left: 0;
+}
+
+.experience-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2.5rem; /* Increased from 1.5rem */
     position: relative;
-    padding-left: 2rem;
+    min-height: 300px; /* Added minimum height */
+}
+
+.experience-card:hover {
+    transform: translateY(-8px); /* Increased lift effect */
+    box-shadow: var(--hover-shadow);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem; /* Increased margin */
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.experience-title h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.75rem; /* Increased font size */
+    font-weight: 600;
+}
+
+.company {
+    color: var(--text-light);
+    font-size: 1.1rem; /* Increased font size */
+    margin-bottom: 0.5rem;
+}
+
+.experience-date {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem; /* Increased padding */
+    border-radius: var(--border-radius);
+    font-size: 1rem; /* Increased font size */
+    font-weight: 500;
+}
+
+.experience-details {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.experience-details li {
+    margin-bottom: 1rem; /* Increased margin */
+    padding-left: 2rem; /* Increased padding */
+    position: relative;
+    font-size: 1.1rem; /* Increased font size */
+    line-height: 1.6;
+}
+
+.experience-details li:before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem; /* Increased bullet size */
+    top: -0.2rem;
+}
+
+/* Add more emphasis to the gradient border */
+.experience-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius);
+    padding: 3px; /* Increased border width */
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.experience-card:hover::before {
+    opacity: 1;
+}
+
+/* Make sure section title is also larger */
+.experience-section h2 {
+    font-size: 2.5rem; /* Increased section title size */
+    margin-bottom: 2.5rem; /* Increased margin */
+    color: var(--primary-color);
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .experience-timeline {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    .experience-card {
+        padding: 2rem;
+        min-height: auto;
+    }
+
+    .experience-title h3 {
+        font-size: 1.5rem;
+    }
+
+    .experience-details li {
+        font-size: 1rem;
+    }
 }
 
 .timeline-item {
