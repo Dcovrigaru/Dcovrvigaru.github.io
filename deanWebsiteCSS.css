@@ -27,8 +27,31 @@
     
     /* Typography */
     --font-regular: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Add these to your existing root variables */
+    --primary-color-rgb: 85, 37, 131;  /* This is the RGB value of #552583 */
+    
+    /* Navigation specific */
+    --nav-height: 80px;
+    --mobile-nav-height: 60px;
+
+
+
+}
+main {
+    position: relative;
+    z-index: 1;
 }
 
+/* Make sure particles are behind everything */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 /* Dark Theme Variables */
 .dark-theme {
     --text-color: #f3f4f6;
@@ -57,6 +80,7 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    padding-top: var(--nav-height);
 }
 
 /* Loading Screen */
@@ -140,7 +164,23 @@ body {
     background-color: var(--primary-color);
     color: white;
 }
+/* Tab Content Styles */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Make sure About tab is visible by default */
+#about.tab-content {
+    display: block;
+    opacity: 1;
+}
 .theme-toggle {
     background: none;
     border: none;
@@ -749,7 +789,7 @@ body {
 
 /* Fade In Animation */
 .fade-in {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
